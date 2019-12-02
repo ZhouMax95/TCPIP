@@ -1,3 +1,0 @@
-﻿  EchoSever.c
-D:\VisualStudioProject\Network\Network\EchoSever.c(14,14): warning C4101: “i”: 未引用的局部变量
-  Network.vcxproj -> D:\VisualStudioProject\Network\Debug\Network.exe
