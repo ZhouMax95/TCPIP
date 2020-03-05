@@ -3,15 +3,14 @@
 #include <string.h>
 #include <winsock2.h>
 
-#define BUF_SIZE 30
+#define BUF_SIZE 1024
 void ErrorHandling(char* message);
 
 int main(int argc, char* argv[]) {
 	WSADATA wsaData;
 	SOCKET hSocket;
-	FILE* fp;
-	char buf[BUF_SIZE];
-	int readCnt=0;
+	char message[BUF_SIZE];
+	int strLen;
 	SOCKADDR_IN servAdr;
 
 	if (argc!=3)
@@ -25,22 +24,40 @@ int main(int argc, char* argv[]) {
 		ErrorHandling("WSAStartup() error!");
 	}
 
-	fp = fopen("receive.txt", "wb");
 	hSocket = socket(PF_INET, SOCK_STREAM, 0);
 
 	memset(&servAdr, 0, sizeof(servAdr));
 	servAdr.sin_family = AF_INET;
 	servAdr.sin_addr.S_un.S_addr = inet_addr(argv[1]);
 	servAdr.sin_port = htons(atoi(argv[2]));
-	connect(hSocket, (SOCKADDR*)&servAdr, sizeof(servAdr));
 
-	while ((readCnt = recv(hSocket, buf, BUF_SIZE, 0)) != 0) {
-		fwrite((void*)buf, 1, readCnt, fp);
+	if (connect(hSocket, (SOCKADDR*)&servAdr, sizeof(servAdr))==-1)
+	{
+		ErrorHandling("connect() error!");
+	}
+	else
+	{
+		puts("Connected....");
 	}
 
-	puts("Received file data");
-	send(hSocket, "Thank you", 10, 0);
-	fclose(fp);
+	while (1) {
+		fpus("Input message(Q to quit):", stdout);
+		fgets(message, BUF_SIZE, stdin);
+
+		if (!strcmp(message,"q\n")||!(strcmp(message,"Q\n")))
+		{
+			break;
+		}
+
+		send(hSocket, message, strlen(message), 0);
+		strLen = recv(hSocket, message, BUF_SIZE - 1, 0);
+		message[strLen] = 0;
+		printf("Message from server: %s", message);
+		
+
+	}
+
+	
 	closesocket(hSocket);
 	WSACleanup();
 	return 0;
