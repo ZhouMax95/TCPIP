@@ -1,11 +1,4 @@
 ﻿  Server.c
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(162,10): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“int”
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(178,39): warning C4047: “函数”:“const char *”与“char”的间接级别不同
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(178,39): warning C4024: “atoi”: 形参和实参 1 的类型不同
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(212,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(220,13): warning C4473: “printf”: 没有为格式字符串传递足够的参数
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(220,13): message : 占位符和其参数预计 1 可变参数，但提供的却是 0 参数
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(220,13): message : 缺失的可变参数 1 为格式字符串“%d”所需
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(254,12): warning C4047: “函数”:“int”与“char [2]”的间接级别不同
-D:\VisualStudioProject\TCPIP\Server\Server\Server.c(254,12): warning C4024: “fputc”: 形参和实参 1 的类型不同
+D:\VisualStudioProject\TCPIP\Server\Server\Server.c(400,23): warning C4018: “<”: 有符号/无符号不匹配
+D:\VisualStudioProject\TCPIP\Server\Server\Server.c(398,6): warning C4101: “i”: 未引用的局部变量
   Server.vcxproj -> D:\VisualStudioProject\TCPIP\Server\Debug\Server.exe
